@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mijn Links</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <div class="card">
+      <header>
+        <h1 id="title">...</h1>
+        <p id="subtitle" class="subtitle">...</p>
+      </header>
+      <section id="links" class="links"></section>
+      <section id="freeText" class="free-text"></section>
+      <footer>
+        <small>Edit <code>config.json</code> in GitHub om je site te updaten.</small>
+      </footer>
+    </div>
+  </main>
+  <script>
+    async function load() {
+      try {
+        const res = await fetch('config.json?nocache=' + Date.now());
+        const cfg = await res.json();
+        document.title = cfg.title || 'Mijn Links';
+        document.getElementById('title').textContent = cfg.title || '';
+        document.getElementById('subtitle').textContent = cfg.subtitle || '';
+        const linksEl = document.getElementById('links');
+        linksEl.innerHTML = '';
+        (cfg.links || []).forEach(item => {
+          const a = document.createElement('a');
+          a.className = 'link-btn';
+          a.href = item.url;
+          a.target = '_blank';
+          a.textContent = item.label;
+          linksEl.appendChild(a);
+        });
+        const free = document.getElementById('freeText');
+        free.innerHTML = (cfg.freeTextHtml || '');
+      } catch (e) {
+        document.getElementById('freeText').innerHTML = '<p style="color:red">config.json niet gevonden.</p>';
+      }
+    }
+    load();
+  </script>
+</body>
+</html>
