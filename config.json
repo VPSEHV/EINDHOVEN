@@ -1,0 +1,19 @@
+{
+  "title": "Mijn Visitekaartje",
+  "subtitle": "Welkom op mijn pagina",
+  "links": [
+    {
+      "label": "Website",
+      "url": "https://example.com"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/"
+    },
+    {
+      "label": "E-mail",
+      "url": "mailto:voorbeeld@mail.com"
+    }
+  ],
+  "freeTextHtml": "<p>Hier kun je extra tekst of info kwijt, zoals een korte bio of openingstijden.</p>"
+}
