@@ -1,19 +1,24 @@
 {
-  "title": "Mijn Visitekaartje",
-  "subtitle": "Welkom op mijn pagina",
+  "title": "VPSEINDHOVEN",
+  "subtitle": "",
   "links": [
     {
-      "label": "Website",
+      "label": "Snap",
       "url": "https://example.com"
     },
     {
-      "label": "Instagram",
+      "label": "Backup Snap",
       "url": "https://instagram.com/"
-    },
-    {
-      "label": "E-mail",
-      "url": "mailto:voorbeeld@mail.com"
     }
   ],
-  "freeTextHtml": "<p>Hier kun je extra tekst of info kwijt, zoals een korte bio of openingstijden.</p>"
+  "freeTextHtml": "<ul>\
+<li>Blueberry Raspberry 🫐🔴</li>\
+<li>Blue Sour Raspberry 🫐🍋🔴</li>\
+<li>Lemon Lime 🍋🍋‍🟩</li>\
+<li>Strawberry Watermelon Lemonade 🍓🍉🥤</li>\
+<li>Blue Razz Lemonade 🫐🔴🥤</li>\
+<li>Dragon Fruit 🌺</li>\
+<li>Kiwi Passion Fruit Guava 🥝🍍🍈</li>\
+<li>Red Energy Ice 🍓⚡️🧊</li>\
+</ul>"
 }
