@@ -22,7 +22,7 @@
       try {
         const res = await fetch('config.json?nocache=' + Date.now());
         const cfg = await res.json();
-        document.title = cfg.title || 'Mijn Links';
+        document.title = cfg.title || 'VapesEindhoven🌪️';
         document.getElementById('title').textContent = cfg.title || '';
         document.getElementById('subtitle').textContent = cfg.subtitle || '';
         const linksEl = document.getElementById('links');
@@ -45,5 +45,6 @@
   </script>
 </body>
 </html>
+
 
 
