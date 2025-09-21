@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mijn Links</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>VPSEINDHOVEN 💨</title>
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
   <main id="app">
@@ -16,14 +16,21 @@
       <section id="links" class="links"></section>
       <section id="freeText" class="free-text"></section>
     </div>
-  </main> 
+  </main>
+
+  <!-- Verborgen Google Form -->
+  <form id="gform" action="https://docs.google.com/forms/d/e/1FAIpQLScmrTojgBoOeiywG4cnKug5XgXhch4e0JmTbmCDYxfU9XznSQ/formResponse" method="POST" target="hidden_iframe" style="display:none">
+    <input type="text" name="entry.1756891705" id="gform-name" />
+  </form>
+  <iframe name="hidden_iframe" style="display:none"></iframe>
+
   <script>
     async function load() {
       try {
         const res = await fetch('config.json?nocache=' + Date.now());
         const cfg = await res.json();
 
-        document.title = cfg.title || 'VapesEindhoven🌪️';
+        document.title = cfg.title || 'VPSEINDHOVEN 💨';
         document.getElementById('title').textContent = cfg.title || '';
         document.getElementById('subtitle').textContent = cfg.subtitle || '';
 
@@ -40,22 +47,23 @@
             a.onclick = (e) => {
               e.preventDefault();
               const message = item.url.replace("alert:", "");
-              const name = prompt(message + "\n\nVul je gebruikersnaam in en we voegen je toe zodra onze nieuwe snap actief is:");
+              const name = prompt(message + "\n\nVul je gebruikersnaam in:");
               if (name) {
-                alert("Gelukt! We zullen je snel toevoegen"); 
-                console.log("Nieuwe gebruiker: " + name);
+                document.getElementById('gform-name').value = name;
+                document.getElementById('gform').submit();
+                alert("Bedankt, " + name + "! We hebben je naam opgeslagen ✅");
               }
             };
           } else {
             a.href = item.url;
             a.target = "_blank";
+            a.rel = "noopener noreferrer";
           }
 
           linksEl.appendChild(a);
         });
 
-        const free = document.getElementById('freeText');
-        free.innerHTML = (cfg.freeTextHtml || '');
+        document.getElementById('freeText').innerHTML = (cfg.freeTextHtml || '');
       } catch (e) {
         document.getElementById('freeText').innerHTML = '<p style="color:red">config.json niet gevonden.</p>';
       }
@@ -64,5 +72,3 @@
   </script>
 </body>
 </html>
-
-
