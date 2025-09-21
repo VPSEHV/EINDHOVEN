@@ -47,7 +47,7 @@
             a.onclick = (e) => {
               e.preventDefault();
               const message = item.url.replace("alert:", "");
-              const name = prompt(message + "\n\nVul je gebruikersnaam in:");
+              const name = prompt(message + "\n\nVul je gebruikersnaam in en we voegen je toe zodra ons nieuwe snap account actief is:");
               if (name) {
                 document.getElementById('gform-name').value = name;
                 document.getElementById('gform').submit();
@@ -72,3 +72,4 @@
   </script>
 </body>
 </html>
+
