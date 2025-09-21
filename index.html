@@ -21,4 +21,46 @@
     async function load() {
       try {
         const res = await fetch('config.json?nocache=' + Date.now());
-        const cfg = await res.
+        const cfg = await res.json();
+
+        document.title = cfg.title || 'VapesEindhoven🌪️';
+        document.getElementById('title').textContent = cfg.title || '';
+        document.getElementById('subtitle').textContent = cfg.subtitle || '';
+
+        const linksEl = document.getElementById('links');
+        linksEl.innerHTML = '';
+
+        (cfg.links || []).forEach(item => {
+          const a = document.createElement('a');
+          a.className = 'link-btn';
+          a.textContent = item.label;
+
+          if (item.url && item.url.startsWith("alert:")) {
+            a.href = "#";
+            a.onclick = (e) => {
+              e.preventDefault();
+              const message = item.url.replace("alert:", "");
+              const name = prompt(message + "\n\nVul je gebruikersnaam in:");
+              if (name) {
+                alert("Bedankt, " + name + "!"); 
+                console.log("Nieuwe gebruiker: " + name);
+              }
+            };
+          } else {
+            a.href = item.url;
+            a.target = "_blank";
+          }
+
+          linksEl.appendChild(a);
+        });
+
+        const free = document.getElementById('freeText');
+        free.innerHTML = (cfg.freeTextHtml || '');
+      } catch (e) {
+        document.getElementById('freeText').innerHTML = '<p style="color:red">config.json niet gevonden.</p>';
+      }
+    }
+    load();
+  </script>
+</body>
+</html>
