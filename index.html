@@ -22,19 +22,33 @@
       try {
         const res = await fetch('config.json?nocache=' + Date.now());
         const cfg = await res.json();
+
         document.title = cfg.title || 'VapesEindhoven🌪️';
         document.getElementById('title').textContent = cfg.title || '';
         document.getElementById('subtitle').textContent = cfg.subtitle || '';
+
         const linksEl = document.getElementById('links');
         linksEl.innerHTML = '';
+
         (cfg.links || []).forEach(item => {
           const a = document.createElement('a');
           a.className = 'link-btn';
-          a.href = item.url;
-          a.target = '_blank';
           a.textContent = item.label;
+
+          if (item.url && item.url.startsWith("alert:")) {
+            a.href = "#";
+            a.onclick = (e) => {
+              e.preventDefault();
+              alert(item.url.replace("alert:", ""));
+            };
+          } else {
+            a.href = item.url;
+            a.target = "_blank";
+          }
+
           linksEl.appendChild(a);
         });
+
         const free = document.getElementById('freeText');
         free.innerHTML = (cfg.freeTextHtml || '');
       } catch (e) {
@@ -45,6 +59,3 @@
   </script>
 </body>
 </html>
-
-
-
