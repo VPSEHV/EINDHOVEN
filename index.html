@@ -40,9 +40,9 @@
             a.onclick = (e) => {
               e.preventDefault();
               const message = item.url.replace("alert:", "");
-              const name = prompt(message + "\n\nVul je gebruikersnaam in:");
+              const name = prompt(message + "\n\nVul je gebruikersnaam in en we voegen je toe zodra onze nieuwe snap actief is:");
               if (name) {
-                alert("Gelukt! We zullen je toevoegen zodra de nieuwe snap actief is"); 
+                alert("Gelukt! We zullen je snel toevoegen"); 
                 console.log("Nieuwe gebruiker: " + name);
               }
             };
@@ -64,4 +64,5 @@
   </script>
 </body>
 </html>
+
 
